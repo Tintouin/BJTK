@@ -12,7 +12,7 @@ class Carte():
         return dichauteur[self.hauteur] + dicolor[self.couleur]
 
     def image(self):
-        fichier = "big/" + str(self.hauteur) + self.couleur + ".png"
+        fichier = "Cards/" + str(self.hauteur) + self.couleur + ".png"
         fenetre = tk.Tk()
         fenetre.geometry('135x192+1000+400')
         self.imageCarte = tk.PhotoImage(file=fichier)  # Stocker l'image dans la variable
