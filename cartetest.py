@@ -29,15 +29,15 @@ class PaquetDeCarte():
 
     def est_vide(self) :
          """Renvoie un booléen égal à True si le paquet ne contient aucune carte et False sinon."""
-         return len(self.cartes) == 0
+         return len(self.paquets) == 0
     
     def taille(self) : 
         """ Renvoie le nombre de cartes contenue dans un paquet de cartes."""
-        return len(self.cartes)
+        return len(self.paquets)
         
     def battre(self) :
         """Permet de battre le paquet de cartes, avec la fonction shuffle de la bibliothèque random."""
-        random.shuffle(self.cartes)
+        random.shuffle(self.paquets)
 
         
 carte = Carte(7, "C")
