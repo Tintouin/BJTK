@@ -1,4 +1,5 @@
 import tkinter as tk
+import random
 
 class Carte():
     def __init__(self, hauteur, couleur):
