@@ -4,6 +4,9 @@ from PIL import Image, ImageTk
 
 fenetre = tk.Tk()
 fenetre.geometry("1800x900")
+fenetre['background']='green'
+
+
 
 class Carte():
     def __init__(self, hauteur, couleur):
