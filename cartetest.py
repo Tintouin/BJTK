@@ -6,6 +6,10 @@ fenetre = tk.Tk()
 fenetre.geometry("1800x900")
 fenetre['background'] = 'green'
 
+# Dictionnaires pour les correspondances de hauteur et de couleur
+cartes_hauteur = {1: "A", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "T", 11: "V", 12: "D", 13: "R"}
+cartes_color = {"P": "P", "C": "C", "T": "T", "K": "K"}
+
 class Carte():
     def __init__(self, hauteur, couleur):
         self.hauteur = hauteur
@@ -31,9 +35,15 @@ class Carte():
         label.grid(row=self.pos[0]+1, column=self.pos[1]+1, padx=10 )  # Utilisation de grid pour l'affichage horizontal
 
 pioche=[]
+# Créer un jeu de 52 cartes avec des codes
+for couleur in ["P", "C", "T", "K"]:
+    for hauteur in range(1, 14):
+        code_carte = cartes_hauteur[hauteur] + cartes_color[couleur]
+        pioche.append(code_carte)
+random.shuffle(pioche)
 croupier=[]
 joueur=[]
-
+print(pioche)
 
 # Créer un bouton pour piocher une carte
 bouton_piocher = tk.Button(fenetre, text="Piocher une carte", command=1+1)
