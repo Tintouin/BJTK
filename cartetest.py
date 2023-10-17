@@ -53,6 +53,19 @@ class PaquetDeCarte():
     def battre(self):
         """Permet de battre le paquet de cartes, avec la fonction shuffle de la bibliothèque random."""
         random.shuffle(self.paquets)
+        
+        
+# Fonction pour piocher une carte
+def piocher_carte():
+    carte_au_hasard = random.choice(paquet.paquets)
+    carte.image(fenetre, resize_factor=0.3)
+    paquet.paquets.remove(carte_au_hasard)
+
+paquet = PaquetDeCarte([Carte(1, "P"), Carte(2, "T"), Carte(3, "C")])
+
+# Créer un bouton pour piocher une carte
+bouton_piocher = tk.Button(fenetre, text="Piocher une carte", command=piocher_carte)
+bouton_piocher.pack()
 
 
 carte = Carte(7, "C")
