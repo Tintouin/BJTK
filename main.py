@@ -1,10 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 12 15:28:20 2023
+
+@author: mraou
+"""
+
 import random
 import tkinter as tk
 
 # Définition de la classe principale pour le jeu de Black Jack
 class CardGame:
     def __init__(self, master):
-        # Initialisation de l'interface graphique avec Tkinter
+        ''''Initialisation de l'interface graphique avec Tkinter'''
         self.master = master
         master.title("Black Jack")
         master.geometry("640x480")
@@ -59,7 +66,7 @@ class CardGame:
         self.player_hand = Hand(self.player_card_frame)
 
     def load_images(self):
-        # Chargement des images des cartes
+        '''Chargement des images des cartes'''
         suits = ['coeur', 'trefle', 'carreau', 'pique']
         face_cards = ['valet', 'reine', 'roi']
         extension = 'png'
@@ -76,14 +83,14 @@ class CardGame:
                 self.cards.append((10, image, ))
 
     def _deal_card(self, hand):
-        # Distribue une carte à une main spécifique
+        '''Distribue une carte à une main spécifique'''
         next_card = self.deck.pop(0)
         self.deck.append(next_card)
         tk.Label(hand.frame, image=next_card[1], relief="raised").pack(side="left")
         return next_card
 
     def score_hand(self, hand):
-        # Calcule le score d'une main de cartes
+        ''''Calcule le score d'une main de cartes'''
         score = 0
         ace = False
         for next_card in hand.cards:
@@ -98,7 +105,7 @@ class CardGame:
         return score
 
     def deal_dealer(self):
-        # Gère le tour du croupier
+        '''Gère le tour du croupier'''
         dealer_score = self.score_hand(self.dealer_hand)
         while 0 < dealer_score < 17:
             self.dealer_hand.add_card(self._deal_card(self.dealer_hand))
@@ -116,7 +123,7 @@ class CardGame:
             self.result_text.set("EX AEQUO")
 
     def deal_player(self):
-        # Gère le tour du joueur
+        '''Gère le tour du joueur'''
         self.player_hand.add_card(self._deal_card(self.player_hand))
         player_score = self.score_hand(self.player_hand)
         self.player_score_label.set(player_score)
@@ -124,14 +131,14 @@ class CardGame:
             self.result_text.set("La maison gagne !")
 
     def initial_deal(self):
-        # Distribue les cartes initiales au joueur et au croupier
+        '''Distribue les cartes initiales au joueur et au croupier'''
         self.deal_player()
         self.dealer_hand.add_card(self._deal_card(self.dealer_hand))
         self.dealer_score_label.set(self.score_hand(self.dealer_hand))
         self.deal_player()
 
     def new_game(self):
-        # Réinitialise le jeu pour une nouvelle manche
+        '''Réinitialise le jeu pour une nouvelle manche'''
         self.dealer_card_frame.destroy()
         self.dealer_card_frame = tk.Frame(self.card_frame, bg="#702f38")
         self.dealer_card_frame.grid(row=0, column=1, sticky='ew', rowspan=2)
@@ -148,28 +155,28 @@ class CardGame:
         self.initial_deal()
 
     def shuffle(self):
-        # Mélange le jeu de cartes
+        '''Mélange le jeu de cartes'''
         random.shuffle(self.deck)
 
     def play(self):
-        # Fonction principale pour démarrer le jeu
+        '''Fonction principale pour démarrer le jeu'''
         self.initial_deal()
         self.master.mainloop()
 
-# Définition de la classe Hand (main)
+#Définition de la classe Hand (main)
 class Hand:
     def __init__(self, frame):
-        # Initialisation d'une main de cartes
+        ''''Initialisation d'une main de cartes'''
         self.frame = frame
         self.cards = []
 
     def add_card(self, card):
-        # Ajoute une carte à la main
+        '''Ajoute une carte à la main'''
         self.cards.append(card)
 
 # Point d'entrée du programme
 if __name__ == "__main__":
-    # Création de la fenêtre principale et du jeu
+    '''Création de la fenêtre principale et du jeu'''
     root = tk.Tk()
     game = CardGame(root)
     game.play()
