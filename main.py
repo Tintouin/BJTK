@@ -1,17 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Nov 12 15:28:20 2023
-
-@author: mraou
-"""
-
 import random
 import tkinter as tk
 
 # Définition de la classe principale pour le jeu de Black Jack
 class CardGame:
     def __init__(self, master):
-        ''''Initialisation de l'interface graphique avec Tkinter'''
+        '''Initialisation de l'interface graphique avec Tkinter'''
         self.master = master
         master.title("Black Jack")
         master.geometry("640x480")
@@ -90,7 +83,7 @@ class CardGame:
         return next_card
 
     def score_hand(self, hand):
-        ''''Calcule le score d'une main de cartes'''
+        '''Calcule le score d'une main de cartes'''
         score = 0
         ace = False
         for next_card in hand.cards:
